@@ -7,8 +7,13 @@ edition = "2021"
 
 [dependencies]
 dioxus = { version = "0.7.1", features = ["fullstack", "router"] }
-rusqlite = { version = "0.32.0", optional = true }
+rusqlite = { version = "0.32.0", features = ["chrono"], optional = true }
 anyhow = { version = "1.0.101" }
+reqwest = { version = "0.12", features = ["rustls-tls"], optional = true }
+scraper = {version = "0.25.0", optional = true }
+chrono = { version = "0.4.43" }
+serde = { version = "1.0.228", features = ["derive"] }
+tokio = { version = "1.49.0", optional = true }
 
 [features]
 default = ["web", "server"]
@@ -16,4 +21,4 @@ web = ["dioxus/web"]
 desktop = ["dioxus/desktop"]
 native = ["dioxus/native"]
 mobile = ["dioxus/mobile"]
-server = ["dioxus/server", "dep:rusqlite"]
+server = ["dioxus/server", "dep:rusqlite", "dep:reqwest", "dep:scraper", "dep:tokio"]
