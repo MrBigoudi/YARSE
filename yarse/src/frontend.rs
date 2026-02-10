@@ -90,6 +90,14 @@ pub fn PageView() -> Element {
                             strong { "Subtitles: " }
                             "{page.subtitles}"
                         }
+                        p {
+                            strong { "Links: " }
+                            li {
+                                for link in page.links {
+                                    ul { "{link}" }
+                                }
+                            }
+                        }
                         details {
                             summary { "Content ({page.content.len()} chars)" }
                             p { style: "white-space: pre-wrap; max-height: 200px; overflow-y: auto;",
